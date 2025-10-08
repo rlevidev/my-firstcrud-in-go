@@ -8,6 +8,7 @@ import (
 	"github.com/rlevidev/my-firstcrud-in-go/src/config/validation"
 	"github.com/rlevidev/my-firstcrud-in-go/src/controllers/model/request"
 	"github.com/rlevidev/my-firstcrud-in-go/src/models"
+	"github.com/rlevidev/my-firstcrud-in-go/src/view"
 )
 
 var (
@@ -35,5 +36,7 @@ func (uci *userControllerInterface) CreateUser(ctx *gin.Context) {
 	}
 
 	logger.Info("Usuário criado com sucesso")
-	ctx.JSON(http.StatusOK, "")
+	ctx.JSON(http.StatusOK, view.ConvertDomainToResponse(
+		domain,
+	))
 }
